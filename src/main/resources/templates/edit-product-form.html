@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit product</title>
+</head>
+<body>
+<h1>Edit product</h1>
+<form th:action="@{/product-update/{id}(id=${product.id})}" method="post" th:object="${product}">
+    <div>
+        Name <input type="text" th:field="*{name}">
+
+    </div>
+    <div>
+        Price <input type="text" th:field="*{price}">
+
+    </div>
+    <div>
+        Quantity <input type="text" th:field="*{quantity}">
+    </div>
+    <div>
+        Expires In <input type="text" th:field="*{expiresIn}">
+    </div>
+    <input type="submit" value="Save">
+</form>
+<br>
+<br>
+<div class="container text-center">
+    <div>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

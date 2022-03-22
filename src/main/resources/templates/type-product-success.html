@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Type product success</title>
+</head>
+<body>
+<h2>Successful product type implementation</h2>
+<p th:text="'Type: '+${typeProduct.type}"/>
+<a href="/insert-type-product-form">Submit another type product</a>
+</body>
+<br>
+<br>
+<div class="container text-center">
+    <div>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+</div>
+
+</html>

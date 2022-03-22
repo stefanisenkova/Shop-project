@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product success</title>
+</head>
+<body>
+<h2>Successful product introduction</h2>
+<p th:text="'Name: '+${product.name}"/>
+<p th:text="'Price: '+${product.price}"/>
+<p th:text="'Quantity: '+${product.quantity}"/>
+<p th:text="'Type product id: '+${product.getTypeProduct().getId()}"/>
+<p th:text="'Expires in: '+${product.expiresIn}"/>
+<a href="/insert-product-form">Submit another product</a>
+</body>
+<br>
+<br>
+<div class="container text-center">
+    <div>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert product</title>
+</head>
+<body>
+
+<h2>Insert product</h2>
+<form action="#" th:action="@{/insert-product-form}" th:object="${product}" method="post">
+<table>
+  <tr>
+    <td>Name:</td>
+    <td><input th:field="*{name}"></td>
+    <td th:if="#{field.hasErrors('name')}" th:errors="*{name}">Error in name!</td>
+  </tr>
+  <tr>
+    <td>Price:</td>
+    <td><input th:field="*{price}"></td>
+    <td th:if="#{field.hasErrors('price')}" th:errors="*{price}">Error in price!</td>
+  </tr>
+  <tr>
+    <td>Quantity:</td>
+    <td><input th:field="*{quantity}"></td>
+    <td th:if="#{field.hasErrors('quantity')}" th:errors="*{quantity}">Error in quantity!</td>
+  </tr>
+  <tr>
+    <td>Type product id:</td>
+    <td><input th:type="number" th:field="*{typeProduct.id}"></td>
+    <td th:if="#{field.hasErrors('typeProduct.id')}" th:errors="*{typeProduct.id}">Error in product type id!</td>
+  </tr>
+  <tr>
+    <td>Expires in:</td>
+    <td><input th:type="date" th:field="*{expiresIn}"></td>
+    <td th:if="#{field.hasErrors('expiresIn')}" th:errors="*{expiresIn}">Error in expiresIn!</td>
+  </tr>
+  <tr>
+    <td><input type="submit" value="Save"></td>
+  </tr>
+
+</table>
+</form>
+
+<br>
+<div class="container text-center">
+  <div>
+
+    <form th:action="@{/logout}" method="post">
+      <input type="submit" value="Sign Out" />
+    </form>
+  </div>
+</div>
+</body>
+</html>
