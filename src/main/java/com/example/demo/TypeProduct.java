@@ -39,4 +39,9 @@ public class TypeProduct {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return this.type;
+    }
 }

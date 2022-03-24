@@ -5,6 +5,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -63,4 +65,16 @@ public class ProductController {
         return "sort-products";
     }
 
+    @GetMapping("/search-specific-product-form")
+    public String searchSpecificProduct(Product product){
+        return "search-specific-product-form";
+    }
+
+    @GetMapping("/printing-specific-product/{name}")
+    public String printSpecificProduct(@RequestParam String name,Model model){
+        Product product = productRepository.findByName(name)
+                .orElseThrow(()-> new IllegalArgumentException("Invalid product name: "+name));
+        model.addAttribute("product", product);
+        return "printing-specific-product";
+    }
 }

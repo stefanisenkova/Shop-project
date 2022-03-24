@@ -5,23 +5,40 @@
     <title>Edit product</title>
 </head>
 <body>
+<a href="/products"><input type="submit" value="Back" /></a>
 <h1>Edit product</h1>
 <form th:action="@{/product-update/{id}(id=${product.id})}" method="post" th:object="${product}">
-    <div>
-        Name <input type="text" th:field="*{name}">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input th:field="*{name}"></td>
+            <td th:if="#{field.hasErrors('name')}" th:errors="*{name}">Error in name!</td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input th:field="*{price}"></td>
+            <td th:if="#{field.hasErrors('price')}" th:errors="*{price}">Error in price!</td>
+        </tr>
+        <tr>
+            <td>Quantity:</td>
+            <td><input th:field="*{quantity}"></td>
+            <td th:if="#{field.hasErrors('quantity')}" th:errors="*{quantity}">Error in quantity!</td>
+        </tr>
+        <tr>
+            <td>Type product id:</td>
+            <td><input th:type="number" th:field="*{typeProduct.id}"></td>
+            <td th:if="#{field.hasErrors('typeProduct.id')}" th:errors="*{typeProduct.id}">Error in product type id!</td>
+        </tr>
+        <tr>
+            <td>Expires in:</td>
+            <td><input th:type="date" th:field="*{expiresIn}"></td>
+            <td th:if="#{field.hasErrors('expiresIn')}" th:errors="*{expiresIn}">Error in expiresIn!</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Save"></td>
+        </tr>
 
-    </div>
-    <div>
-        Price <input type="text" th:field="*{price}">
-
-    </div>
-    <div>
-        Quantity <input type="text" th:field="*{quantity}">
-    </div>
-    <div>
-        Expires In <input type="text" th:field="*{expiresIn}">
-    </div>
-    <input type="submit" value="Save">
+    </table>
 </form>
 <br>
 <br>
