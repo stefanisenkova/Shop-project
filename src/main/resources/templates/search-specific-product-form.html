@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search specific product</title>
+</head>
+<body>
+<h1>Search specific product</h1>
+<form action="#" th:action="@{/printing-specific-product/{name}(id=${product.name})}" th:object="${product}" method="get">
+    <table>
+        <tr>Product name: </tr>
+        <tr><input th:field="*{name}"></tr>
+        <td><input type="submit" value="Search"> </td>
+    </table>
+</form>
+</body>
+</html>

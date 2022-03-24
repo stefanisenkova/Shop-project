@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class EmployeeController {
@@ -74,7 +75,8 @@ public class EmployeeController {
     }
     @GetMapping("/product-edit/{id}")
     public String productEdit(@PathVariable int id, Model model){
-        Product product = productRepository.getById(id);
+        Product product = productRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("Invalid product Id: "+id));
         model.addAttribute("product", product);
         return "edit-product-form";
     }
@@ -88,8 +90,9 @@ public class EmployeeController {
     }
 
     @PostMapping("/product-delete/{id}")
-    public String actorDelete(@PathVariable int id) {
-        Product product = productRepository.getById(id);
+    public String productDelete(@PathVariable int id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("Invalid product Id: "+id));
         productRepository.delete(product);
         return "redirect:/products";
     }
