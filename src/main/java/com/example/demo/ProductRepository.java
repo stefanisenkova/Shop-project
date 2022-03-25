@@ -14,4 +14,10 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
 //    public Product findByName(String name);
 
     public java.util.Optional<Product> findByName(String name);
+    public List<Product> findByPriceGreaterThanEqual(double price);
+    public List<Product> findByPriceLessThan(double price);
+    public List<Product> findByQuantityGreaterThanEqual(double quantity);
+    public List<Product> findByQuantityLessThan(double quantity);
+
+
 }
