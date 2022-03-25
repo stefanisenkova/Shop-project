@@ -77,4 +77,45 @@ public class ProductController {
         model.addAttribute("product", product);
         return "printing-specific-product";
     }
+    @GetMapping("/search-by-price-greater-than")
+    public String searchByPriceGreaterThan(Product product){
+        return "search-by-price-greater-than";
+    }
+    @GetMapping("/printing-by-greater-price/{price}")
+    public String printProductByPriceGreaterThan(@RequestParam double price,Model model){
+        List<Product> product= productRepository.findByPriceGreaterThanEqual(price) ;
+        model.addAttribute("product", product);
+        return "printing-by-greater-price";
+    }
+    @GetMapping("/search-by-price-less-than")
+    public String searchByPriceLessThan(Product product){
+        return "search-by-price-less-than";
+    }
+    @GetMapping("/printing-by-less-price/{price}")
+    public String printProductByLessThan(@RequestParam double price,Model model){
+        List<Product> product= productRepository.findByPriceLessThan(price) ;
+        model.addAttribute("product", product);
+        return "printing-by-less-price";
+    }
+    @GetMapping("/search-by-quantity-greater-than")
+    public String searchByQuantityGreaterThan(Product product){
+        return "search-by-quantity-greater-than";
+    }
+    @GetMapping("/printing-by-greater-quantity/{quantity}")
+    public String printProductByQuantityGreaterThan(@RequestParam double quantity,Model model){
+        List<Product> product= productRepository.findByQuantityGreaterThanEqual(quantity) ;
+        model.addAttribute("product", product);
+        return "printing-by-greater-quantity";
+    }
+    @GetMapping("/search-by-quantity-less-than")
+    public String searchByQuantityLessThan(Product product){
+        return "search-by-quantity-less-than";
+    }
+    @GetMapping("/printing-by-less-quantity/{quantity}")
+    public String printQuantityByLessThan(@RequestParam double quantity,Model model){
+        List<Product> product= productRepository.findByQuantityLessThan(quantity) ;
+        model.addAttribute("product", product);
+        return "printing-by-less-quantity";
+    }
+
 }

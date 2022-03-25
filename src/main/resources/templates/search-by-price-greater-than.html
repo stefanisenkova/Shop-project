@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search price</title>
+</head>
+<body>
+<h1>Search price</h1>
+<form action="#" th:action="@{/printing-by-greater-price/{price}(id=${product.price})}" th:object="${product}" method="get">
+    <table>
+        <tr>Product price: </tr>
+        <tr><input th:field="*{price}"></tr>
+        <td><input type="submit" value="Search"> </td>
+    </table>
+</form>
+</body>
+</html>
