@@ -1,4 +1,6 @@
-package com.example.demo;
+package com.example.demo.entity;
+
+import com.example.demo.entity.Product;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

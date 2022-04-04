@@ -1,5 +1,12 @@
-package com.example.demo;
+package com.example.demo.controller;
 
+import com.example.demo.repository.EmployeeRepository;
+import com.example.demo.repository.ProductRepository;
+import com.example.demo.repository.RoleRepository;
+import com.example.demo.repository.TypeProductRepository;
+import com.example.demo.entity.Employee;
+import com.example.demo.entity.Product;
+import com.example.demo.entity.TypeProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -11,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class EmployeeController {
