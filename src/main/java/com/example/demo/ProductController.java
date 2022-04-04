@@ -151,8 +151,10 @@ public class ProductController {
 
     @GetMapping("/printing-product-by-name/{name}")
     public String printProductByName(@RequestParam String name, Model model) {
+
         Product product = productRepository.findByNameContainingIgnoreCase(name);
-        model.addAttribute("product", product);
+        if(product.getQuantity()>1){
+        model.addAttribute("product", product);}
         return "printing-product-by-name";
     }
 }
