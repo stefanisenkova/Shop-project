@@ -11,7 +11,7 @@ public class TypeProduct {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @NotEmpty
-    private String type;
+    public String type;
 
     @OneToMany(mappedBy = "typeProduct")
     private List<Product> products;

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class CustomUserDetails implements UserDetails {
+public class CustomUserDetails implements UserDetails{
     private Employee employee;
 
     public CustomUserDetails(Employee employee) {
@@ -17,11 +17,11 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority>authorities=new ArrayList<GrantedAuthority>();
-        for(Role role:this.employee.getRoles()){
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        for (Role role : this.employee.getRoles()) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-        return  authorities;
+        return authorities;
     }
 
     @Override
@@ -29,13 +29,9 @@ public class CustomUserDetails implements UserDetails {
         return employee.getPassword();
     }
 
-    public Long getId() {
-        return employee.getId();
-    }
-
     @Override
     public String getUsername() {
-        return employee.getLastName();
+        return String.valueOf(employee.getId());
     }
 
     @Override
