@@ -44,6 +44,7 @@ public class SetupDataLoader implements
         Role adminRole =  createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
         createRoleIfNotFound("ROLE_USER", Arrays.asList(readPrivilege));
         Employee employee=new Employee();
+        employee.setId(Long.valueOf("5"));
         employee.setFirstName("Test");
         employee.setLastName("Test");
        employee.setPassword(passwordEncoder.encode("test"));

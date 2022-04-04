@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Search specific product</title>
@@ -35,10 +35,10 @@
      <td th:text="${product.typeProduct}">Type</td>
 
      <td>
-       <a th:href="@{/product-edit/{id}(id=${product.id})}"> Edit</a>
+       <a th:href="@{/product-edit/{id}(id=${product.id})}"sec:authorize="hasRole('ROLE_ADMIN')"> Edit</a>
      </td>
      <td>
-       <form th:action="@{/product-delete/{id}(id=${product.id})}" method="post">
+       <form th:action="@{/product-delete/{id}(id=${product.id})}" method="post" sec:authorize="hasRole('ROLE_ADMIN')">
          <input type= "submit" value="Delete">
        </form>
      </td>
