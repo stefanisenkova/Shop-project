@@ -1,4 +1,6 @@
-package com.example.demo;
+package com.example.demo.entity;
+
+import com.example.demo.entity.Role;
 
 import javax.persistence.*;
 import java.util.Collection;
