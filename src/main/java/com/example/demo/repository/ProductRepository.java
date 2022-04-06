@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import com.example.demo.entity.Product;
+import com.example.demo.entity.TypeProduct;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,6 +14,7 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     public List<Product> findByQuantityGreaterThanEqual(double quantity);
     public List<Product> findByQuantityLessThan(double quantity);
     Product findByNameContainingIgnoreCase(String name);
+//    Product findByTypeProductNameContainingIgnoreCase(String  TypeProduct);
 
 
 

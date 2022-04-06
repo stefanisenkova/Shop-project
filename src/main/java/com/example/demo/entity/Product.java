@@ -25,6 +25,9 @@ public class Product {
     @ManyToOne
     @JoinColumn(name="type_product_id", referencedColumnName = "id")
     private TypeProduct typeProduct;
+    @ManyToOne
+    @JoinColumn(name="purchase_id", referencedColumnName = "id")
+    private Purchase purchase;
 
     public Date getExpiresIn() {
         return expiresIn;

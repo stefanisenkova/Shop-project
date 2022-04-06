@@ -145,9 +145,9 @@ public class ProductController {
         model.addAttribute("product", product);
         return "printing-specific-product";
     }
-    @GetMapping("/search-product-form")
+    @GetMapping("/search-product-by-name")
     public String searchProductByName(Product product) {
-        return "search-product-form";
+        return "search-product-by-name";
     }
 
     @GetMapping("/printing-product-by-name/{name}")

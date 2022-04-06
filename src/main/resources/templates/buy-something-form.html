@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market</title>
+</head>
+<body>
+<a href="/customer-form"><input type="submit" value="Home" /></a><br><br>
+<h1>Market</h1>
+<form action="#" th:action="@{/purchase/{id}(id=${product.id})/{quantity}(id=${product.quantity})}" th:object="${product}" method="post">
+    <table>
+        <tr>
+            <td>Product id:</td>
+            <td><input th:type="number" th:field="*{id}"></td>
+            <td th:if="#{field.hasErrors('id')}" th:errors="*{id}"></td>
+        </tr>
+        <tr>
+            <td>Quantity:</td>
+            <td><input th:field="*{quantity}"></td>
+            <td th:if="#{field.hasErrors('quantity')}" th:errors="*{quantity}">Error in quantity!</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Add to cart"></td>
+        </tr>
+        <tr>
+            <td><a href="stop-shopping"><input type="button" value="Stop shopping"/></a></td>
+        </tr>
+
+    </table>
+</form>
+
+</body>
+</html>

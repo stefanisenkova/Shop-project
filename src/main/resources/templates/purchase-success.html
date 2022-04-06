@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Purchase success</title>
+</head>
+<body>
+<h1>Successfully added product to cart</h1>
+<p th:each="purchase: ${purchase}"/>
+<p th:text="'Name: '+${purchase.name}"/>
+<p th:text="'Price: '+${purchase.price}"/>
+<p th:text="'Quantity: '+${purchase.quantity}"/>
+<p th:text="'Final price: '+${purchase.finalPrice}"/>
+<a href="/buy-something-form"><input type="button" value="Continue shopping"></a></br>
+<a href="/stop-shopping"><input type="button" value="Еnd of shopping"></a>
+</body>
+</html>

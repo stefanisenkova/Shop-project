@@ -1,7 +1,5 @@
 package com.example.demo.entity;
 
-import com.example.demo.entity.Product;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
@@ -13,7 +11,7 @@ public class TypeProduct {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @NotEmpty
-    public String type;
+    public String name;
 
     @OneToMany(mappedBy = "typeProduct")
     private List<Product> products;
@@ -34,16 +32,16 @@ public class TypeProduct {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return this.type;
+        return this.name;
     }
 }
