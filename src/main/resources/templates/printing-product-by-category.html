@@ -2,7 +2,7 @@
 <html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <title>Search product by name</title>
+  <title>Search product by category</title>
   <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
   <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -24,7 +24,7 @@
     </thead>
 
     <tbody>
-    <tr th:each="product: ${product}">
+    <tr th:each="product: ${listProducts}">
       <td th:text="${product.id}">Product ID</td>
       <td th:text="${product.name}">Name</td>
       <td th:text="${product.price}">Price</td>
@@ -33,7 +33,7 @@
       <td th:text="${product.typeProduct}">Type</td>
 
   </table>
-  <a href="/search-product-by-name"><input type="button" value="Search another product"></a>
+  <a href="/search-product-by-category"><input type="button" value="Search another product"></a>
 </div>
 </body>
 </html>
