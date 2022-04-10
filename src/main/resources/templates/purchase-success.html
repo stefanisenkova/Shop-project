@@ -8,9 +8,9 @@
 <h1>Successfully added product to cart</h1>
 <p th:each="purchase: ${purchase}"/>
 <p th:text="'Name: '+${purchase.name}"/>
-<p th:text="'Price: '+${purchase.price}"/>
+<p th:text="'Product price: '+${purchase.productPrice}"/>
 <p th:text="'Quantity: '+${purchase.quantity}"/>
-<p th:text="'Final price: '+${purchase.finalPrice}"/>
+<p th:text="'Total amount: '+${purchase.totalAmount}"/>
 <a href="/buy-something-form"><input type="button" value="Continue shopping"></a></br>
 <a href="/stop-shopping"><input type="button" value="Еnd of shopping"></a>
 </body>

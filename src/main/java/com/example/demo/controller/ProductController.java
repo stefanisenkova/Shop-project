@@ -115,6 +115,9 @@ public class ProductController {
         return "printing-by-less-quantity";
     }
 
+
+
+
     @GetMapping("/search-specific-product-form")
     public String searchSpecificProduct(Product product) {
         return "search-specific-product-form";
@@ -122,7 +125,10 @@ public class ProductController {
 
     @GetMapping("/printing-specific-product/{name}")
     public String printSpecificProduct(@RequestParam String name, Model model) {
-        Product product = productRepository.findByNameContainingIgnoreCase(name);
+        List <Product> product = productRepository.findByNameContainingIgnoreCase(name);
+        if (product.size()!=1) {
+            return "wrong-specific-name";
+        }
         model.addAttribute("product", product);
         return "printing-specific-product";
     }
@@ -134,12 +140,13 @@ public class ProductController {
     @GetMapping("/printing-product-by-name/{name}")
     public String printProductByName(@RequestParam String name, Model model) {
 
-        Product product = productRepository.findByNameContainingIgnoreCase(name);
-        if (product == null) {
+
+        List <Product> product = productRepository.findByNameContainingIgnoreCase(name);
+        if (product.size()!=1) {
             return "wrong-name";
         }
         if(product.getQuantity()>1){
-            model.addAttribute("product", product);}
+        model.addAttribute("product", product);}
         return "printing-product-by-name";
     }
 }

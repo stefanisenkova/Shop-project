@@ -39,8 +39,8 @@ public class SetupDataLoader implements
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        if (alreadySetup)
-            return;
+//        if (alreadySetup)
+//            return;
         Privilege readPrivilege
                 = createPrivilegeIfNotFound("READ_PRIVILEGE");
         Privilege writePrivilege
@@ -50,7 +50,7 @@ public class SetupDataLoader implements
         Role adminRole =  createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
         createRoleIfNotFound("ROLE_USER", Arrays.asList(readPrivilege));
         Employee employee=new Employee();
-        employee.setId(Long.valueOf("5"));
+        //employee.setId(Long.valueOf("5"));
         employee.setFirstName("Test");
         employee.setLastName("Test");
        employee.setPassword(passwordEncoder.encode("test"));
@@ -69,6 +69,7 @@ public class SetupDataLoader implements
             privilegeRepository.save(privilege);
         }
         return privilege; }
+
     @Transactional
     Role createRoleIfNotFound(
             String name, Collection<Privilege> privileges) {

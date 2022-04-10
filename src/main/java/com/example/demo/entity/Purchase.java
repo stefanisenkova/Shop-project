@@ -1,34 +1,38 @@
 package com.example.demo.entity;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
-@Table(name="purchases")
+@Table(name = "purchases")
 public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @Column(name = "product_price")
+    private double productPrice;
     private double quantity;
-    private double price;
-//    @CreationTimestamp
-//    private Timestamp date;
-    private double finalPrice;
+    @Column(name = "total_amount")
+    private double totalAmount;
 
-    @OneToMany(mappedBy = "purchase")
-    private List<Product> products;
+    @ManyToOne
+    @JoinColumn(name="product_id", referencedColumnName = "id")
+    private Product product;
 
-    public Purchase(String name, double quantity, double price, double finalPrice) {
+    @ManyToOne
+    @JoinColumn(name="order_id", referencedColumnName = "id")
+    private Order order;
+
+    public Purchase(){
+
+    }
+
+    public Purchase(String name, double productPrice, double quantity, double totalАmount) {
         this.name = name;
+        this.productPrice = productPrice;
         this.quantity = quantity;
-        this.price = price;
-        this.finalPrice = finalPrice;
+        this.totalAmount = totalАmount;
     }
 
     public int getId() {
@@ -47,6 +51,14 @@ public class Purchase {
         this.name = name;
     }
 
+    public double getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
+    }
+
     public double getQuantity() {
         return quantity;
     }
@@ -55,27 +67,27 @@ public class Purchase {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
-        return price;
+    public double getTotalAmount() {
+        return totalAmount;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
-//    public Timestamp getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(Timestamp date) {
-//        this.date = date;
-//    }
-
-    public double getFinalPrice() {
-        return finalPrice;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setFinalPrice(double finalPrice) {
-        this.finalPrice = finalPrice;
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

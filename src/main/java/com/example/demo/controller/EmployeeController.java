@@ -73,7 +73,6 @@ public class EmployeeController {
 
     @PostMapping("/insert-product-form")
     public String productSubmit(@Valid Product product, BindingResult bindingResult) {
-
         if (bindingResult.hasErrors()) {
             return "insert-product-form";
         }

@@ -6,19 +6,10 @@
     <title>Type product success</title>
 </head>
 <body>
+<a href="/employees"><input type="submit" value="Home" /></a>
 <h2>Successful product type implementation</h2>
-<p th:text="'Type: '+${typeProduct.type}"/>
+<p th:text="'Name: '+${typeProduct.name}"/>
 <a href="/insert-type-product-form">Submit another type product</a>
 </body>
-<br>
-<br>
-<div class="container text-center">
-    <div>
-
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out" />
-        </form>
-    </div>
-</div>
 
 </html>

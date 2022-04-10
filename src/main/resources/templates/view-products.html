@@ -8,19 +8,10 @@
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+<a href="/customer-form"><input type="submit" value="Home" /></a>
 <div class="container text-center">
     <div>
-
-        <form th:action="@{/logout}" method="post">
-            <p>
-                Welcome!
-            </p>
-            <input type="submit" value="Sign Out" />
-        </form>
-    </div>
-    <div>
         <br/>
-        <a href="/customer-form"><input type="submit" value="Home" /></a>
         <h1>List of Products</h1>
     </div>
 
@@ -39,14 +30,12 @@
                 <th>Quantity</th>
                 <th>Expires In</th>
                 <th>Type</th>
-                <th></th>
-                <th></th>
 
             </tr>
             </thead>
 
             <tbody>
-            <tr th:each="product: ${listProducts}">
+            <tr th:each="product: ${correctProducts}">
                 <td th:text="${product.id}">Product ID</td>
                 <td th:text="${product.name}">Name</td>
                 <td th:text="${product.price}">Price</td>
