@@ -8,20 +8,12 @@
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+<a href="/employees"><input type="submit" value="Home" /></a>
+<a href="/product-management-form"><input type="submit" value="Back" /></a>
 <div class="container text-center">
     <div>
-
-        <form th:action="@{/logout}" method="post">
-            <p>
-                Welcome!
-            </p>
-            <input type="submit" value="Sign Out" />
-        </form>
-    </div>
-    <div>
         <br/>
-        <a href="/employees"><input type="submit" value="Home" /></a>
-        <h1>List of Products</h1>
+        <h1>List of products</h1>
     </div>
 
     <div class="table-responsive">

@@ -5,45 +5,31 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.sql.Date;
+import java.util.Collection;
+import java.util.List;
 
 
 @Entity
 @Table(name = "products")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Size(min = 2,max = 20)
     private String name;
     private double price;
     private double quantity;
-
     @Column(name = "expires_in")
     @CreatedDate
      private Date expiresIn;
+
     @ManyToOne
     @JoinColumn(name="type_product_id", referencedColumnName = "id")
     private TypeProduct typeProduct;
-    @ManyToOne
-    @JoinColumn(name="purchase_id", referencedColumnName = "id")
-    private Purchase purchase;
 
-    public Date getExpiresIn() {
-        return expiresIn;
-    }
-
-    public void setExpiresIn(Date expiresIn) {
-        this.expiresIn = expiresIn;
-    }
-
-    public TypeProduct getTypeProduct() {
-        return typeProduct;
-    }
-
-    public void setTypeProduct(TypeProduct typeProduct) {
-        this.typeProduct = typeProduct;
-    }
+    @OneToMany(mappedBy = "product")
+    private List<Purchase> purchases;
 
     public int getId() {
         return id;
@@ -75,5 +61,29 @@ public class Product {
 
     public void setQuantity(double quantity) {
         this.quantity = quantity;
+    }
+
+    public Date getExpiresIn() {
+        return expiresIn;
+    }
+
+    public void setExpiresIn(Date expiresIn) {
+        this.expiresIn = expiresIn;
+    }
+
+    public TypeProduct getTypeProduct() {
+        return typeProduct;
+    }
+
+    public void setTypeProduct(TypeProduct typeProduct) {
+        this.typeProduct = typeProduct;
+    }
+
+    public List<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
     }
 }

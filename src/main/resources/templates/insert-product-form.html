@@ -7,6 +7,7 @@
 </head>
 <body>
 <a href="/employees"><input type="submit" value="Home" /></a>
+<a href="/product-management-form"><input type="submit" value="Back" /></a>
 <h2>Insert product</h2>
 <form action="#" th:action="@{/insert-product-form}" th:object="${product}" method="post">
 <table>
@@ -42,14 +43,5 @@
 </table>
 </form>
 
-<br>
-<div class="container text-center">
-  <div>
-
-    <form th:action="@{/logout}" method="post">
-      <input type="submit" value="Sign Out" />
-    </form>
-  </div>
-</div>
 </body>
 </html>

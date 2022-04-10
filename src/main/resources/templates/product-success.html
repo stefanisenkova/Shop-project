@@ -6,6 +6,7 @@
     <title>Product success</title>
 </head>
 <body>
+<a href="/employees"><input type="submit" value="Home" /></a>
 <h2>Successful product introduction</h2>
 <p th:text="'Name: '+${product.name}"/>
 <p th:text="'Price: '+${product.price}"/>
@@ -14,15 +15,5 @@
 <p th:text="'Expires in: '+${product.expiresIn}"/>
 <a href="/insert-product-form">Submit another product</a>
 </body>
-<br>
-<br>
-<div class="container text-center">
-    <div>
-
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out" />
-        </form>
-    </div>
-</div>
 
 </html>

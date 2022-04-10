@@ -13,7 +13,7 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     public List<Product> findByPriceLessThan(double price);
     public List<Product> findByQuantityGreaterThanEqual(double quantity);
     public List<Product> findByQuantityLessThan(double quantity);
-    Product findByNameContainingIgnoreCase(String name);
+    List <Product> findByNameContainingIgnoreCase(String name);
 //    Product findByTypeProductNameContainingIgnoreCase(String  TypeProduct);
 
 

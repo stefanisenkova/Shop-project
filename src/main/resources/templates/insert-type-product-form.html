@@ -7,29 +7,20 @@
 </head>
 <body>
 <a href="/employees"><input type="submit" value="Home" /></a>
+<a href="/product-management-form"><input type="submit" value="Back" /></a>
 <h2>Insert type product</h2>
 <form action="#" th:action="@{/insert-type-product-form}" th:object="${typeProduct}" method="post">
   <table>
     <tr>
-      <td>Type:</td>
-      <td><input th:field="*{type}"></td>
-      <td th:if="#{field.hasErrors('type')}" th:errors="*{type}">Error in type!</td>
+      <td>Name:</td>
+      <td><input th:field="*{name}"></td>
+      <td th:if="#{field.hasErrors('name')}" th:errors="*{name}">Error in name!</td>
     </tr>
       <tr>
           <td><input type="submit" value="Save"></td>
       </tr>
   </table>
 </form>
-<br>
-<br>
-<div class="container text-center">
-    <div>
-
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out" />
-        </form>
-    </div>
-</div>
 
 </body>
 </html>

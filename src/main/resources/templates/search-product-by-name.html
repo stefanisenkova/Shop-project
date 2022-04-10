@@ -5,6 +5,7 @@
   <title>Search product by name</title>
 </head>
 <body>
+<a href="/customer-form"><input type="submit" value="Home" /></a>
 <h1>Search product by name</h1>
 <form action="#" th:action="@{/printing-product-by-name/{name}(id=${product.name})}" th:object="${product}" method="get">
   <table>

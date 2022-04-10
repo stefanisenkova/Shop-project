@@ -5,6 +5,7 @@
     <title>Search price</title>
 </head>
 <body>
+<a href="/employees"><input type="submit" value="Back" /></a>
 <h1>Search price</h1>
 <form action="#" th:action="@{/printing-by-less-price/{price}(id=${product.price})}" th:object="${product}" method="get">
     <table>
