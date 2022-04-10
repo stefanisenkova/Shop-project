@@ -145,7 +145,7 @@ public class ProductController {
         if (product.size()!=1) {
             return "wrong-name";
         }
-        if(product.getQuantity()>1){
+        if(product.get(0).getQuantity()>0){
         model.addAttribute("product", product);}
         return "printing-product-by-name";
     }
