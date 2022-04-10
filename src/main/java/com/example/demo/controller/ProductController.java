@@ -116,6 +116,8 @@ public class ProductController {
     }
 
 
+
+
     @GetMapping("/search-specific-product-form")
     public String searchSpecificProduct(Product product) {
         return "search-specific-product-form";
@@ -138,14 +140,13 @@ public class ProductController {
     @GetMapping("/printing-product-by-name/{name}")
     public String printProductByName(@RequestParam String name, Model model) {
 
+
         List <Product> product = productRepository.findByNameContainingIgnoreCase(name);
         if (product.size()!=1) {
             return "wrong-name";
         }
-//        if(product.getQuantity()>1){
-//        model.addAttribute("product", product);}
-        model.addAttribute("product", product);
+        if(product.getQuantity()>1){
+        model.addAttribute("product", product);}
         return "printing-product-by-name";
     }
-
 }
