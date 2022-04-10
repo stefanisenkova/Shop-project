@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Role;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.RoleRepository;
@@ -8,7 +9,9 @@ import com.example.demo.entity.Employee;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.TypeProduct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,10 +33,28 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @GetMapping("/employee-register")
+    public String showRegistrationForm(Employee employee, Model model) {
+        List<Role> roles=roleRepository.findAll();
+        model.addAttribute("roles", roles);
+        model.addAttribute("employee", employee);
 
+        return "employee-register";
+    }
 
-        @PostMapping("/login")
-       String login(Employee employee){
+    @PostMapping("/employee-register-process")
+    public String processRegister(Employee employee) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(employee.getPassword());
+        employee.setPassword(encodedPassword);
+
+        employeeRepository.save(employee);
+
+        return "redirect:/login";
+    }
+
+    @PostMapping("/login")
+    String login(Employee employee){
             return "/login";
         }
 
@@ -112,4 +133,40 @@ public class EmployeeController {
         productRepository.delete(product);
         return "redirect:/products";
     }
+
+    @GetMapping("/sorting-employees")
+    public String sortingEmployees(Model model){
+        List<Employee> employees=employeeRepository.findAll();
+        model.addAttribute("employees",employees);
+            return "sorting-employees";
+    }
+
+    @GetMapping("/sort-employees-by-first-name-ASC")
+    public String sortEmployeesByNameASC(Model model) {
+        List<Employee> employees = employeeRepository.findAll(Sort.by(Sort.Direction.ASC, "firstName"));
+        model.addAttribute("employees", employees);
+        return "sorting-employees";
+    }
+
+    @GetMapping("/sort-employees-by-first-name-DESC")
+    public String sortEmployeesByNameDESC(Model model) {
+        List<Employee> employees = employeeRepository.findAll(Sort.by(Sort.Direction.DESC, "firstName"));
+        model.addAttribute("employees", employees);
+        return "sorting-employees";
+    }
+
+    @GetMapping("/sort-employees-by-salary-ASC")
+    public String sortEmployeesBySalaryASC(Model model) {
+        List<Employee> employees = employeeRepository.findAll(Sort.by(Sort.Direction.ASC, "salary"));
+        model.addAttribute("employees", employees);
+        return "sorting-employees";
+    }
+
+    @GetMapping("/sort-employees-by-salary-DESC")
+    public String sortEmployeesBySalaryDESC(Model model) {
+        List<Employee> employees = employeeRepository.findAll(Sort.by(Sort.Direction.DESC, "salary"));
+        model.addAttribute("employees", employees);
+        return "sorting-employees";
+    }
+
 }
