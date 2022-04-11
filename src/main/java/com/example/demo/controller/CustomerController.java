@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.Status;
 import com.example.demo.entity.Order;
 import com.example.demo.entity.Purchase;
 import com.example.demo.entity.TypeProduct;
@@ -34,6 +35,7 @@ public class CustomerController {
     List<Purchase> purchases =new ArrayList<>();
     List<Product> products=new ArrayList<>();
     List<Double> quantity=new ArrayList<>();
+    List<Order> orders=new ArrayList<>();
     double finalPrice=0;
     Purchase purchase;Product product;
 
@@ -112,22 +114,24 @@ public class CustomerController {
         productRepository.save(product);
 
         order.setPrice(finalPrice);
+        order.setStatus(Status.NEW);
         orderRepository.save(order);
         for(int i=0;i< purchases.size();i++){
             purchases.get(i).setOrder(order);
-        }
-
-        for(int i=0;i<purchases.size();i++){
             purchaseRepository.save(purchases.get(i));
         }
+
+//        for(int i=0;i<purchases.size();i++){
+//            purchaseRepository.save(purchases.get(i));
+//        }
 
         model.addAttribute("purchases",purchases);
         return "purchases";
     }
 
     @GetMapping("/orders")
-    public String orders(Model model){
-        List<Order> orders =orderRepository.findAll();
+    public String orders(Order order,Model model){
+        orders =orderRepository.findAll();
         model.addAttribute("orders",orders);
         return "orders";
     }
@@ -137,5 +141,18 @@ public class CustomerController {
         List <Purchase> chosePurchases=purchaseRepository.findByOrderId(id);
         model.addAttribute("chosePurchases",chosePurchases);
         return "order-details";
+    }
+
+    @PostMapping("/order-status-update/{id}")
+    public String orderUpdate(@PathVariable int id, Order order) {
+        order.setId(id);
+        for(int i=0;i<orders.size();i++){
+            if(orders.get(i).getId()==order.getId()){
+                orders.get(i).setStatus(order.getStatus());
+            }
+            orderRepository.save(orders.get(i));
+        }
+        return "redirect:/orders";
+
     }
 }
