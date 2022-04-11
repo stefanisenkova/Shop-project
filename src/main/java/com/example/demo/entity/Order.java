@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.example.demo.Status;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -18,7 +19,8 @@ public class Order {
     private double price;
     @CreationTimestamp
     private Timestamp date;
-
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @OneToMany(mappedBy = "order")
     private List<Purchase> purchases;
@@ -54,5 +56,13 @@ public class Order {
 
     public void setPurchases(List<Purchase> purchases) {
         this.purchases = purchases;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

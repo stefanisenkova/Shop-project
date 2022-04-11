@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Orders</title>
@@ -23,11 +23,13 @@
 
 <div>
     <table class="table table-striped table-bordered">
+
         <thead class="thead-dark">
         <tr>
             <th>Order id</th>
             <th>Price</th>
             <th>Date</th>
+            <th>Status</th>
             <th></th>
         </tr>
         </thead>
@@ -38,12 +40,26 @@
             <td th:text="${order.price}"></td>
             <td th:text="${order.date}"></td>
             <td>
+            <form th:action="@{/order-status-update/{id}(id=${order.id})}" th:object="${order}" method="post">
+            <p th:text="${order.status}"> </p>
+                <div  sec:authorize="isAuthenticated()">
+                <select  th:field="*{status}">
+                        <option th:each="status : ${T(com.example.demo.Status).values()}"
+                                th:value="${status}" th:text="${status.displayValue}"></option>
+                    </select>
+                    <input type= "submit" value="Save">
+                </div>
+                </form>
+            </td>
+            <td>
                 <a th:href="@{/order-details/{id}(id=${order.id})}"><input type="button" value="Order details"></a>
             </td>
         </tr>
         </tbody>
+
     </table>
-    <td><a href="/customer-form"><input type="submit" value="Home" /></a></td>
+
+
 </div>
 </div>
 </body>
