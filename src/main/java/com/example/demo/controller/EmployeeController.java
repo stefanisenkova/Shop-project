@@ -1,13 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Role;
-import com.example.demo.repository.EmployeeRepository;
-import com.example.demo.repository.ProductRepository;
-import com.example.demo.repository.RoleRepository;
-import com.example.demo.repository.TypeProductRepository;
-import com.example.demo.entity.Employee;
-import com.example.demo.entity.Product;
-import com.example.demo.entity.TypeProduct;
+import com.example.demo.Status;
+import com.example.demo.entity.*;
+import com.example.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -32,6 +28,8 @@ public class EmployeeController {
     private RoleRepository roleRepository;
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
     @GetMapping("/employee-register")
     public String showRegistrationForm(Employee employee, Model model) {
@@ -168,5 +166,60 @@ public class EmployeeController {
         model.addAttribute("employees", employees);
         return "sorting-employees";
     }
+
+    @GetMapping("/filter-orders-by-status-new")
+    public String filterOrdersByStatusNew(Order order,Model model) {
+        List<Order> allOrders = orderRepository.findAll();
+        List<Order> orders=new ArrayList<>();
+        for(int i=0;i<allOrders.size();i++){
+            if(allOrders.get(i).getStatus()== Status.NEW){
+                orders.add(allOrders.get(i));
+            }
+        }
+        model.addAttribute("orders", orders);
+        return "orders";
+    }
+
+
+    @GetMapping("/filter-orders-by-status-processed")
+    public String filterOrdersByStatusProcessed(Order order,Model model) {
+        List<Order> allOrders = orderRepository.findAll();
+        List<Order> orders=new ArrayList<>();
+        for(int i=0;i<allOrders.size();i++){
+            if(allOrders.get(i).getStatus()== Status.PROCESSED){
+                orders.add(allOrders.get(i));
+            }
+        }
+        model.addAttribute("orders", orders);
+        return "orders";
+    }
+
+
+    @GetMapping("/filter-orders-by-status-sent-by-courier")
+    public String filterOrdersByStatusSentByCourier(Order order,Model model) {
+        List<Order> allOrders = orderRepository.findAll();
+        List<Order> orders=new ArrayList<>();
+        for(int i=0;i<allOrders.size();i++){
+            if(allOrders.get(i).getStatus()== Status.SENT_BY_COURIER){
+                orders.add(allOrders.get(i));
+            }
+        }
+        model.addAttribute("orders", orders);
+        return "orders";
+    }
+
+    @GetMapping("/filter-orders-by-status-completed")
+    public String filterOrdersByStatusCompleted(Order order,Model model) {
+        List<Order> allOrders = orderRepository.findAll();
+        List<Order> orders=new ArrayList<>();
+        for(int i=0;i<allOrders.size();i++){
+            if(allOrders.get(i).getStatus()== Status.COMPLETED){
+                orders.add(allOrders.get(i));
+            }
+        }
+        model.addAttribute("orders", orders);
+        return "orders";
+    }
+
 
 }
