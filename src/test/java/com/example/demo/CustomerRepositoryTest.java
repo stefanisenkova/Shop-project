@@ -1,12 +1,10 @@
 package com.example.demo;
 
-import com.example.demo.entity.Customer;
-import com.example.demo.repository.CustomerRepository;
+import com.example.demo.entity.User;
+import com.example.demo.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
@@ -20,17 +18,17 @@ public class CustomerRepositoryTest {
     @Autowired
     private TestEntityManager entityManager;
     @Autowired
-    private CustomerRepository repo;
+    private UserRepository repo;
 
     @Test
     public void testCreateCustomer(){
-        Customer customer=new Customer();
-        customer.setFirstName("Ivan");
-        customer.setLastName("Dimitrov");
-        customer.setAge(20);
+        User user = new User();
+        user.setFirstName("Ivan");
+        user.setLastName("Dimitrov");
+        user.setAge(20);
 
-        Customer savedCustomer=repo.save(customer);
-        Customer existCustomer=entityManager.find(Customer.class,savedCustomer.getId());
-        assertThat(customer.getFirstName()).isEqualTo(existCustomer.getFirstName());
+        User savedCustomer=repo.save(user);
+        User existCustomer=entityManager.find(User.class,savedCustomer.getId());
+        assertThat(user.getFirstName()).isEqualTo(existCustomer.getFirstName());
     }
 }
