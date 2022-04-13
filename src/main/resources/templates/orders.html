@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Orders</title>
-  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container text-center">
@@ -17,13 +17,16 @@
     </div>
 
     <td>
-        <a th:href="@{/filter-orders-by-status-new}"><input type="submit" value="Filter by status 'New'"></a>
-        <a th:href="@{/filter-orders-by-status-processed}"><input type="submit" value="Filter by status 'Processed'"></a>
-        <a th:href="@{/filter-orders-by-status-sent-by-courier}"><input type="submit" value="Filter by status 'Sent by courier'"></a>
-        <a th:href="@{/filter-orders-by-status-completed}"><input type="submit" value="Filter by status 'Completed'"></a>
-        <a th:href="@{/orders}"><input type="submit" value="All orders"></a>
+        <a th:href="@{/filter-orders-by-status-new}"><input type="submit" value="Filter by status 'New'"sec:authorize="hasRole('ROLE_EMPLOYEE')"></a>
+        <a th:href="@{/filter-orders-by-status-processed}"><input type="submit" value="Filter by status 'Processed'"sec:authorize="hasRole('ROLE_EMPLOYEE')"></a>
+        <a th:href="@{/filter-orders-by-status-sent-by-courier}"><input type="submit" value="Filter by status 'Sent by courier'"sec:authorize="hasRole('ROLE_EMPLOYEE')"></a>
+        <a th:href="@{/filter-orders-by-status-completed}"><input type="submit" value="Filter by status 'Completed'"sec:authorize="hasRole('ROLE_EMPLOYEE')"></a>
+        <a th:href="@{/orders}"><input type="submit" value="All orders"sec:authorize="hasRole('ROLE_EMPLOYEE')"></a>
     </td>
 
+    <div>
+
+        </br>
 
 <div>
 
@@ -49,12 +52,12 @@
             <td>
             <form th:action="@{/order-status-update/{id}(id=${order.id})}" th:object="${order}" method="post">
             <p th:text="${order.status}"> </p>
-                <div  sec:authorize="isAuthenticated()">
+                <div  sec:authorize="hasRole('ROLE_EMPLOYEE')">
                 <select  th:field="*{status}">
                         <option th:each="status : ${T(com.example.demo.Status).values()}"
                                 th:value="${status}" th:text="${status.displayValue}"></option>
                     </select>
-                    <input type= "submit" value="Save">
+                    <input type= "submit" value="Save"sec:authorize="hasRole('ROLE_ADMIN'),hasRole('ROLE_EMPLOYEE')">
                 </div>
                 </form>
             </td>
@@ -64,6 +67,8 @@
         </tr>
         </tbody>
     </table>
+
+</div>
 </div>
 </div>
 </body>

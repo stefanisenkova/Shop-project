@@ -12,7 +12,7 @@ public class Role implements GrantedAuthority {
     private Long id;
     private String name;
     @ManyToMany(mappedBy = "roles")
-    private Collection<Employee> employees;
+    private Collection<User> users;
     @ManyToMany
     @JoinTable(
             name = "roles_privileges",
@@ -38,12 +38,12 @@ public class Role implements GrantedAuthority {
         this.name = name;
     }
 
-    public Collection<Employee> getEmployees() {
-        return employees;
+    public Collection<User> getEmployees() {
+        return users;
     }
 
-    public void setEmployees(Collection<Employee> users) {
-        this.employees = employees;
+    public void setEmployees(Collection<User> users) {
+        this.users = users;
     }
 
     public Collection<Privilege> getPrivileges() {
