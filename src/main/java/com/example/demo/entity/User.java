@@ -1,12 +1,13 @@
 package com.example.demo.entity;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 @Entity
-@Table(name = "employees")
-public class Employee {
+@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

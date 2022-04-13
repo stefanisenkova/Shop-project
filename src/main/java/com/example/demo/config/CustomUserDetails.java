@@ -1,7 +1,7 @@
 package com.example.demo.config;
 
-import com.example.demo.entity.Employee;
 import com.example.demo.entity.Role;
+import com.example.demo.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,16 +11,16 @@ import java.util.Collection;
 import java.util.List;
 
 public class CustomUserDetails implements UserDetails{
-    private Employee employee;
+    private User user;
 
-    public CustomUserDetails(Employee employee) {
-        this.employee = employee;
+    public CustomUserDetails(User user) {
+        this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        for (Role role : this.employee.getRoles()) {
+        for (Role role : this.user.getRoles()) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
         return authorities;
@@ -28,12 +28,12 @@ public class CustomUserDetails implements UserDetails{
 
     @Override
     public String getPassword() {
-        return employee.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return String.valueOf(employee.getId());
+        return String.valueOf(user.getId());
     }
 
     @Override
@@ -57,6 +57,6 @@ public class CustomUserDetails implements UserDetails{
     }
 
     public String getFullName() {
-        return employee.getFirstName() + " " + employee.getLastName();
+        return user.getFirstName() + " " + user.getLastName();
     }
 }

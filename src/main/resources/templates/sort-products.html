@@ -7,19 +7,22 @@
   <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-<a href="/employees"><input type="submit" value="Home" /></a>
+<a href="/menu"><input type="submit" value="Home" /></a>
 <div class="container text-center">
   <div>
     <br/>
     <h1>List of products</h1>
   </div>
-
-  <div class="table-responsive">
-    <table class="table align-middle">
-    </table>
-  </div>
-
+  <td>
+    <a th:href="@{/sort-products-by-name-ASC}"><input type="submit" value="Sort by name ASC"></a>
+    <a th:href="@{/sort-products-by-name-DESC}"><input type="submit" value="Sort by name DESC"></a>
+    <a th:href="@{/sort-products-by-price-ASC}"><input type="submit" value="Sort by price ASC"></a>
+    <a th:href="@{/sort-products-by-price-DESC}"><input type="submit" value="Sort by price DESC"></a>
+    <a th:href="@{/sort-products-by-expires-ASC}"><input type="submit" value="Sort by expires in ASC"></a>
+    <a th:href="@{/sort-products-by-expires-DESC}"><input type="submit" value="Sort by expires in DESC"></a>
+  </td>
   <div>
+    </br>
     <table class="table table-striped table-bordered">
       <thead class="thead-dark">
       <tr>
@@ -47,14 +50,6 @@
 
       </tbody>
     </table>
-    <td>
-      <a th:href="@{/sort-products-by-name-ASC}"><input type="submit" value="Sort by name ASC"></a>
-      <a th:href="@{/sort-products-by-name-DESC}"><input type="submit" value="Sort by name DESC"></a>
-      <a th:href="@{/sort-products-by-price-ASC}"><input type="submit" value="Sort by price ASC"></a>
-      <a th:href="@{/sort-products-by-price-DESC}"><input type="submit" value="Sort by price DESC"></a>
-      <a th:href="@{/sort-products-by-expires-ASC}"><input type="submit" value="Sort by expires in ASC"></a>
-      <a th:href="@{/sort-products-by-expires-DESC}"><input type="submit" value="Sort by expires in DESC"></a>
-    </td>
   </div>
 
 </div>
