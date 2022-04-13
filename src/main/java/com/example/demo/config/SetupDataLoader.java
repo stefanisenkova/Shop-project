@@ -1,9 +1,9 @@
 package com.example.demo.config;
 
-import com.example.demo.entity.Employee;
+import com.example.demo.entity.User;
 import com.example.demo.entity.Privilege;
 import com.example.demo.entity.Role;
-import com.example.demo.repository.EmployeeRepository;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.PrivilegeRepository;
 import com.example.demo.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class SetupDataLoader implements
     boolean alreadySetup = true;
 
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private UserRepository userRepository;
 
 
     @Autowired
@@ -45,21 +45,30 @@ public class SetupDataLoader implements
                 = createPrivilegeIfNotFound("READ_PRIVILEGE");
         Privilege writePrivilege
                 = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
-        List<Privilege> adminPrivileges = Arrays.asList(
+        List<Privilege> employeePrivileges = Arrays.asList(
                 readPrivilege, writePrivilege);
-        Role adminRole =  createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
-        createRoleIfNotFound("ROLE_USER", Arrays.asList(readPrivilege));
-        Employee employee=new Employee();
-        //employee.setId(Long.valueOf("5"));
-        employee.setFirstName("Test");
-        employee.setLastName("Test");
-       employee.setPassword(passwordEncoder.encode("test"));
-       employee.setEmail("test@test.com");
-       employee.setRoles(Arrays.asList(adminRole));
-        employeeRepository.save(employee);
+      //  Role adminRole = createRoleIfNotFound("ROLE_ADMIN", employeePrivileges);
+        createRoleIfNotFound("ROLE_CUSTOMER", Arrays.asList(readPrivilege));
+        Role employeeRole = createRoleIfNotFound("ROLE_EMPLOYEE", employeePrivileges);
+/*
+       User user = new User();
+       // user.setId(2L);
+        user.setFirstName("Test");
+        user.setLastName("Test");
+        user.setEmail("test2@test.com");
+        user.setPassword(passwordEncoder.encode("test"));
+        user.setAge(24);
+        user.setSalary(8000);
+        user.setRoles(Arrays.asList(adminRole));
+        userRepository.save(user);
+
+ */
+
+
 
         alreadySetup = true;
     }
+
     @Transactional
     Privilege createPrivilegeIfNotFound(String name) {
         Privilege privilege = privilegeRepository.findByName(name);
@@ -68,7 +77,8 @@ public class SetupDataLoader implements
             privilege.setName(name);
             privilegeRepository.save(privilege);
         }
-        return privilege; }
+        return privilege;
+    }
 
     @Transactional
     Role createRoleIfNotFound(

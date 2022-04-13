@@ -48,12 +48,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/employee-update").access("hasRole('ADMIN')")
+                .antMatchers("/employee-update").access("hasRole('ROLE_EMPLOYEE')")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .usernameParameter("id")
-                .defaultSuccessUrl("/employees")
+                .defaultSuccessUrl("/menu")
                 .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
