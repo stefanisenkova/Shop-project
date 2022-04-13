@@ -57,7 +57,7 @@
                         <option th:each="status : ${T(com.example.demo.Status).values()}"
                                 th:value="${status}" th:text="${status.displayValue}"></option>
                     </select>
-                    <input type= "submit" value="Save"sec:authorize="hasRole('ROLE_ADMIN'),hasRole('ROLE_EMPLOYEE')">
+                    <input type= "submit" value="Save"sec:authorize="hasRole('ROLE_EMPLOYEE')">
                 </div>
                 </form>
             </td>

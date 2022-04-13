@@ -47,21 +47,8 @@ public class SetupDataLoader implements
                 = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
         List<Privilege> employeePrivileges = Arrays.asList(
                 readPrivilege, writePrivilege);
-        Role adminRole = createRoleIfNotFound("ROLE_ADMIN", employeePrivileges);
         createRoleIfNotFound("ROLE_CUSTOMER", Arrays.asList(readPrivilege));
         Role employeeRole = createRoleIfNotFound("ROLE_EMPLOYEE", employeePrivileges);
-
-       User user = new User();
-       // user.setId(2L);
-        user.setFirstName("Test");
-        user.setLastName("Test");
-        user.setEmail("test2@test.com");
-        user.setPassword(passwordEncoder.encode("test"));
-        user.setAge(24);
-        user.setSalary(8000);
-        user.setRoles(Arrays.asList(adminRole));
-        userRepository.save(user);
-
 
 
         alreadySetup = true;
