@@ -1,6 +1,5 @@
 package com.example.demo.config;
 
-import com.example.demo.config.CustomUserDetails;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

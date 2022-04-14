@@ -2,16 +2,13 @@ package com.example.demo.entity;
 
 import com.example.demo.Status;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

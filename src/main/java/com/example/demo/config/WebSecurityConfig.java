@@ -2,10 +2,8 @@
 package com.example.demo.config;
 
 
-import com.example.demo.config.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -48,15 +46,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/employee-update","/sort-products","/product-management-form",
-                        "/insert-type-product-form","/insert-product-form","/products",
-                        "/product-edit/{id}","/product-update/{id}","/product-delete/{id}",
-                        "/sorting-employees","/sort-employees-by-first-name-ASC"
-                        ,"/sort-employees-by-first-name-DESC",
+                .antMatchers("/employee-update", "/sort-products", "/product-management-form",
+                        "/insert-type-product-form", "/insert-product-form", "/products",
+                        "/product-edit/{id}", "/product-update/{id}", "/product-delete/{id}",
+                        "/sorting-employees", "/sort-employees-by-first-name-ASC"
+                        , "/sort-employees-by-first-name-DESC",
                         "/sort-employees-by-salary-ASC",
-                        "/sort-employees-by-salary-DESC","/filter-orders-by-status-completed").access("hasRole('ROLE_EMPLOYEE')")
-                .antMatchers("/view-products","/search-product-by-category","/printing-product-by-category/{name}",
-                        "/buy-something-form","/purchase/{id}/{quantity}","/stop-shopping").access("hasRole('ROLE_CUSTOMER')")
+                        "/sort-employees-by-salary-DESC", "/filter-orders-by-status-completed").access("hasRole('ROLE_EMPLOYEE')")
+                .antMatchers("/view-products", "/search-product-by-category", "/printing-product-by-category/{name}",
+                        "/buy-something-form", "/purchase/{id}/{quantity}", "/stop-shopping").access("hasRole('ROLE_CUSTOMER')")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()

@@ -1,11 +1,10 @@
 package com.example.demo.config;
 
-import com.example.demo.entity.User;
 import com.example.demo.entity.Privilege;
 import com.example.demo.entity.Role;
-import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.PrivilegeRepository;
 import com.example.demo.repository.RoleRepository;
+import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;

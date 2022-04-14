@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 @Table(name = "purchases")
@@ -17,14 +16,14 @@ public class Purchase {
     private double totalAmount;
 
     @ManyToOne
-    @JoinColumn(name="product_id", referencedColumnName = "id")
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name="order_id", referencedColumnName = "id")
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
 
-    public Purchase(){
+    public Purchase() {
 
     }
 
