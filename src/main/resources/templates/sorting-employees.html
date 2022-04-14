@@ -1,65 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sort employees</title><link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body>
-<a href="/menu"><input type="submit" value="Home" /></a>
-<div class="container text-center">
-    <div>
-        <br/>
-        <h1>List of employees</h1>
+<center>
+    <head th:replace="fragments/header :: header-css">
+        <title>Sort employees</title>
+    </head>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <div class="row">
+            <meta charset="ISO-8859-1">
+            <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+            <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+            <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        </div>
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     </div>
+    <body>
+    <div class="container text-center">
+        <div>
+            <br/>
+            <h1>List of employees</h1>
+        </div>
 
-    <div class="table-responsive">
-        <table class="table align-middle">
-        </table>
+        <div class="table-responsive">
+            <table class="table align-middle">
+            </table>
+        </div>
+
+        <td>
+            <a th:href="@{/sort-employees-by-first-name-ASC}"><input type="submit" value="Sort by first name ASC"></a>
+            <a th:href="@{/sort-employees-by-first-name-DESC}"><input type="submit" value="Sort by first name DESC"></a>
+            <a th:href="@{/sort-employees-by-salary-ASC}"><input type="submit" value="Sort by salary ASC"></a>
+            <a th:href="@{/sort-employees-by-salary-DESC}"><input type="submit" value="Sort by salary DESC"></a>
+        </td>
+
+
+        <div>
+            </br>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Employee ID</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Salary</th>
+
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="employee: ${employees}">
+                    <td th:text="${employee.id}"></td>
+                    <td th:text="${employee.firstName}"></td>
+                    <td th:text="${employee.lastName}"></td>
+                    <td th:text="${employee.age}"></td>
+                    <td th:text="${employee.email}"></td>
+                    <td th:text="${employee.salary}">Salary</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
     </div>
+    <br><br><br><br>
 
-    <td>
-        <a th:href="@{/sort-employees-by-first-name-ASC}"><input type="submit" value="Sort by first name ASC"></a>
-        <a th:href="@{/sort-employees-by-first-name-DESC}"><input type="submit" value="Sort by first name DESC"></a>
-        <a th:href="@{/sort-employees-by-salary-ASC}"><input type="submit" value="Sort by salary ASC"></a>
-        <a th:href="@{/sort-employees-by-salary-DESC}"><input type="submit" value="Sort by salary DESC"></a>
-    </td>
-
-
-    <div>
-        </br>
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
-            <tr>
-                <th>Employee ID</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Age</th>
-                <th>Email</th>
-                <th>Salary</th>
-
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr th:each="employee: ${employees}">
-                <td th:text="${employee.id}"></td>
-                <td th:text="${employee.firstName}"></td>
-                <td th:text="${employee.lastName}"></td>
-                <td th:text="${employee.age}"></td>
-                <td th:text="${employee.email}"></td>
-                <td th:text="${employee.salary}">Salary</td>
-            </tr>
-
-            </tbody>
-        </table>
-    </div>
-
-</div>
-</div>
-
-
-
-</body>
+    <div th:replace="fragments/footer :: footer"></div>
+    </body>
+</center>
 </html>

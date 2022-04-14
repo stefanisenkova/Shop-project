@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Search price</title>
-</head>
-<body>
-<a href="/menu"><input type="submit" value="Home" /></a>
-<h1>Search price</h1>
-<form action="#" th:action="@{/printing-by-greater-price/{price}(id=${product.price})}" th:object="${product}" method="get">
-    <table>
-        <tr>Product price: </tr>
-        <tr><input th:field="*{price}"></tr>
-        <td><input type="submit" value="Search"> </td>
-    </table>
-</form>
-</body>
+<center>
+    <head th:replace="fragments/header :: header-css">
+        <title>Search by greater price</title>
+    </head>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <div class="row">
+            <meta charset="ISO-8859-1">
+            <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+            <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+            <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        </div>
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    </div>
+
+    <body>
+    <h1>Search price</h1>
+    <form action="#" th:action="@{/printing-by-greater-price/{price}(id=${product.price})}" th:object="${product}"
+          method="get">
+        <table>
+            <tr>Product price:</tr>
+            <tr><input th:field="*{price}"></tr>
+            <td><input type="submit" value="Search"></td>
+        </table>
+    </form>
+    <br><br><br><br>
+
+    <div th:replace="fragments/footer :: footer"></div>
+    </body>
+</center>
 </html>

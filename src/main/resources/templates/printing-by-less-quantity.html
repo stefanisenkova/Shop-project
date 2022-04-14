@@ -1,53 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Search by price</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body>
-<a href="/menu"><input type="submit" value="Home" /></a>
-<div class="container text-center">
-    <table class="table table-striped table-bordered">
-        <thead class="thead-dark">
-        <tr>
-            <th>Product ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Expires In</th>
-            <th>Type</th>
-            <th></th>
-            <th></th>
 
-        </tr>
-        </thead>
+<center>
+    <head th:replace="fragments/header :: header-css">
+        <title>Search by quantity less than</title>
 
-        <tbody>
-        <tr th:each="product: ${product}">
-            <td th:text="${product.id}">Product ID</td>
-            <td th:text="${product.name}">Name</td>
-            <td th:text="${product.price}">Price</td>
-            <td th:text="${product.quantity}">Quantity</td>
-            <td th:text="${product.expiresIn}">Expires In</td>
-            <td th:text="${product.typeProduct}">Type</td>
-
-            <td>
-                <a th:href="@{/product-edit/{id}(id=${product.id})}"> Edit</a>
-            </td>
-            <td>
-                <form th:action="@{/product-delete/{id}(id=${product.id})}" method="post">
-                    <input type= "submit" value="Delete">
-                </form>
-            </td>
-        </tr>
-        </tbody>
+    </head>
 
 
-    </table>
-    <a href="/search-by-quantity-less-than"><input type="button" value="Search another product"></a>
-</div>
-</body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <div class="row">
+            <meta charset="ISO-8859-1">
+            <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+            <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+            <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        </div>
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    </div>
+    <body>
+    <div class="container text-center">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Expires In</th>
+                <th>Type</th>
+                <th></th>
+                <th></th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="product: ${product}">
+                <td th:text="${product.id}">Product ID</td>
+                <td th:text="${product.name}">Name</td>
+                <td th:text="${product.price}">Price</td>
+                <td th:text="${product.quantity}">Quantity</td>
+                <td th:text="${product.expiresIn}">Expires In</td>
+                <td th:text="${product.typeProduct}">Type</td>
+
+                <td>
+                    <a th:href="@{/product-edit/{id}(id=${product.id})}"> Edit</a>
+                </td>
+                <td>
+                    <form th:action="@{/product-delete/{id}(id=${product.id})}" method="post">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+
+
+        </table>
+        <a href="/search-by-quantity-less-than"><input type="button" value="Search another product"></a>
+    </div>
+    <br><br><br><br>
+
+    <div th:replace="fragments/footer :: footer"></div>
+
+    </body>
+</center>
 </html>

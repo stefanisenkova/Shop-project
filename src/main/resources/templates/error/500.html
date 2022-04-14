@@ -1,7 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <center>
     <head th:replace="fragments/header :: header-css">
+        <title>Insert Product</title>
+
     </head>
 
 
@@ -10,21 +12,24 @@
     <div class="container">
         <div class="row">
             <meta charset="ISO-8859-1">
-            <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+            <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
             <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
             <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
         </div>
         <body>
-        <br><br><br>
-        <h2>Welcome to S&S Shop!</h2>
-        <p>You are?</p>
-        <a href="/login"><input type="button" value="Customer"></a>
-        <a href="/login"><input type="button" value="Employee"></a>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+        <div class="container">
+            <div class="starter-template">
+                <h1 th:text="Internal_Server_Error"></h1>
+
+                <a href="/menu" th:text="HOME"></a>
+            </div>
+        </div>
+
+
         <div th:replace="fragments/footer :: footer"></div>
         </body>
-
     </div>
 </center>
-
 </html>
