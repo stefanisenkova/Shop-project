@@ -7,15 +7,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ProductRepository extends JpaRepository<Product,Integer> {
+public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<Product> findByNameContaining(String name, Sort sort);
-    public List<Product> findByPriceGreaterThanEqual(double price);
-    public List<Product> findByPriceLessThan(double price);
-    public List<Product> findByQuantityGreaterThanEqual(double quantity);
-    public List<Product> findByQuantityLessThan(double quantity);
-    List <Product> findByNameContainingIgnoreCase(String name);
-//    Product findByTypeProductNameContainingIgnoreCase(String  TypeProduct);
 
+    public List<Product> findByPriceGreaterThanEqual(double price);
+
+    public List<Product> findByPriceLessThan(double price);
+
+    public List<Product> findByQuantityGreaterThanEqual(double quantity);
+
+    public List<Product> findByQuantityLessThan(double quantity);
+
+    List<Product> findByNameContainingIgnoreCase(String name);
 
 
 }

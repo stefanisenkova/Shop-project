@@ -8,8 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface TypeProductRepository extends JpaRepository<TypeProduct,Integer> {
+public interface TypeProductRepository extends JpaRepository<TypeProduct, Integer> {
     List<TypeProduct> findByNameContainingIgnoreCase(String name);
-//    @Query("SELECT u FROM TypeProduct u WHERE u.name = ?1")
-//    public TypeProduct findByName(String type);
+
 }
