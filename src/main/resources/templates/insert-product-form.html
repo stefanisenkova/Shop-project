@@ -1,47 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<center>
+    <head th:replace="fragments/header :: header-css">
+        <title>Insert Product</title>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Insert product</title>
-</head>
-<body>
-<a href="/menu"><input type="submit" value="Home" /></a>
-<a href="/product-management-form"><input type="submit" value="Back" /></a>
-<h2>Insert product</h2>
-<form action="#" th:action="@{/insert-product-form}" th:object="${product}" method="post">
-<table>
-  <tr>
-    <td>Name:</td>
-    <td><input th:field="*{name}"></td>
-    <td th:if="#{field.hasErrors('name')}" th:errors="*{name}">Error in name!</td>
-  </tr>
-  <tr>
-    <td>Price:</td>
-    <td><input th:field="*{price}"></td>
-    <td th:if="#{field.hasErrors('price')}" th:errors="*{price}">Error in price!</td>
-  </tr>
-  <tr>
-    <td>Quantity:</td>
-    <td><input th:field="*{quantity}"></td>
-    <td th:if="#{field.hasErrors('quantity')}" th:errors="*{quantity}">Error in quantity!</td>
-  </tr>
-  <tr>
-    <td>Type product id:</td>
-    <td><input th:type="number" th:field="*{typeProduct.id}"></td>
-    <td th:if="#{field.hasErrors('typeProduct.id')}" th:errors="*{typeProduct.id}">Error in product type id!</td>
-  </tr>
-  <tr>
-    <td>Expires in:</td>
-    <td><input th:type="date" th:field="*{expiresIn}"></td>
-    <td th:if="#{field.hasErrors('expiresIn')}" th:errors="*{expiresIn}">Error in expiresIn!</td>
-  </tr>
-  <tr>
-    <td><input type="submit" value="Save"></td>
-  </tr>
+    </head>
 
-</table>
-</form>
 
-</body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <div class="row">
+            <meta charset="ISO-8859-1">
+            <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+            <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+            <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        </div>
+        <body>
+        <a href="/product-management-form"><input type="submit" value="Back"/></a>
+        <h2>Insert product</h2>
+        <form action="#" th:action="@{/insert-product-form}" th:object="${product}" method="post">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input th:field="*{name}"></td>
+                    <td th:if="#{field.hasErrors('name')}" th:errors="*{name}">Error in name!</td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td><input th:field="*{price}"></td>
+                    <td th:if="#{field.hasErrors('price')}" th:errors="*{price}">Error in price!</td>
+                </tr>
+                <tr>
+                    <td>Quantity:</td>
+                    <td><input th:field="*{quantity}"></td>
+                    <td th:if="#{field.hasErrors('quantity')}" th:errors="*{quantity}">Error in quantity!</td>
+                </tr>
+                <tr>
+                    <td>Type product id:</td>
+                    <td><input th:type="number" th:field="*{typeProduct.id}"></td>
+                    <td th:if="#{field.hasErrors('typeProduct.id')}" th:errors="*{typeProduct.id}">Error in product type
+                        id!
+                    </td>
+                </tr>
+                <tr>
+                    <td>Expires in:</td>
+                    <td><input th:type="date" th:field="*{expiresIn}"></td>
+                    <td th:if="#{field.hasErrors('expiresIn')}" th:errors="*{expiresIn}">Error in expiresIn!</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Save"></td>
+                </tr>
+
+            </table>
+        </form>
+
+        <br><br><br><br>
+
+        <div th:replace="fragments/footer :: footer"></div>
+        </body>
+
+    </div>
+</center>
 </html>

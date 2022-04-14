@@ -51,8 +51,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/employee-update","/sort-products","/product-management-form",
                         "/insert-type-product-form","/insert-product-form","/products",
                         "/product-edit/{id}","/product-update/{id}","/product-delete/{id}",
-                        "/sorting-employees","/sort-employees-by-first-name-ASC",
-                        "/order-details/{id}","/sort-employees-by-first-name-DESC",
+                        "/sorting-employees","/sort-employees-by-first-name-ASC"
+                        ,"/sort-employees-by-first-name-DESC",
                         "/sort-employees-by-salary-ASC",
                         "/sort-employees-by-salary-DESC","/filter-orders-by-status-completed").access("hasRole('ROLE_EMPLOYEE')")
                 .antMatchers("/view-products","/search-product-by-category","/printing-product-by-category/{name}",

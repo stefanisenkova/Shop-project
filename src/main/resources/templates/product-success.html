@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Product success</title>
-</head>
-<body>
-<a href="/menu"><input type="submit" value="Home" /></a>
-<h2>Successful product introduction</h2>
-<p th:text="'Name: '+${product.name}"/>
-<p th:text="'Price: '+${product.price}"/>
-<p th:text="'Quantity: '+${product.quantity}"/>
-<p th:text="'Type product id: '+${product.getTypeProduct().getId()}"/>
-<p th:text="'Expires in: '+${product.expiresIn}"/>
-<a href="/insert-product-form">Submit another product</a>
-</body>
+<center>
+    <head th:replace="fragments/header :: header-css">
+        <title>Product success</title>
+    </head>
 
+    <div th:replace="fragments/header :: header"></div>
+    <div class="container">
+        <div class="row">
+            <meta charset="ISO-8859-1">
+            <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+            <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+            <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        </div>
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    </div>
+    <body>
+    <br><br><br>
+
+    <h2>Successful product introduction</h2>
+    <p th:text="'Name: '+${product.name}"/>
+    <p th:text="'Price: '+${product.price}"/>
+    <p th:text="'Quantity: '+${product.quantity}"/>
+    <p th:text="'Type product id: '+${product.getTypeProduct().getId()}"/>
+    <p th:text="'Expires in: '+${product.expiresIn}"/>
+    <a href="/insert-product-form">Submit another product</a>
+    <br><br><br><br>
+
+    <div th:replace="fragments/footer :: footer"></div>
+    </body>
+</center>
 </html>

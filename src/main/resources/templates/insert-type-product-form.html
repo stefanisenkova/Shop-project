@@ -1,26 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Insert type product</title>
-</head>
-<body>
-<a href="/menu"><input type="submit" value="Home" /></a>
-<a href="/product-management-form"><input type="submit" value="Back" /></a>
-<h2>Insert type product</h2>
-<form action="#" th:action="@{/insert-type-product-form}" th:object="${typeProduct}" method="post">
-  <table>
-    <tr>
-      <td>Name:</td>
-      <td><input th:field="*{name}"></td>
-      <td th:if="#{field.hasErrors('name')}" th:errors="*{name}">Error in name!</td>
-    </tr>
-      <tr>
-          <td><input type="submit" value="Save"></td>
-      </tr>
-  </table>
-</form>
+<center>
+    <head th:replace="fragments/header :: header-css">
+        <title>Insert Type Product</title>
 
-</body>
+    </head>
+
+
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <div class="row">
+            <meta charset="ISO-8859-1">
+            <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+            <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+            <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        </div>
+        <body>
+        <br><br><br>
+        <h2>Insert type product</h2>
+        <form action="#" th:action="@{/insert-type-product-form}" th:object="${typeProduct}" method="post">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input th:field="*{name}"></td>
+                    <td th:if="#{field.hasErrors('name')}" th:errors="*{name}">Error in name!</td>
+
+                    <td><input type="submit" value="Save"></td>
+                </tr>
+            </table>
+        </form>
+
+        </body>
+        <br><br><br><br>
+
+        <div th:replace="fragments/footer :: footer"></div>
+        </body>
+
+    </div>
+</center>
 </html>

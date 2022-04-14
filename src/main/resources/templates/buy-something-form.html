@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Market</title>
-</head>
-<body>
-<a href="/menu"><input type="submit" value="Home" /></a><br><br>
-<h1>Market</h1>
-<form action="#" th:action="@{/purchase/{id}(id=${product.id})/{quantity}(id=${product.quantity})}" th:object="${product}" method="post">
-    <table>
-        <tr>
-            <td>Product id:</td>
-            <td><input th:type="number" th:field="*{id}"></td>
-            <td th:if="#{field.hasErrors('id')}" th:errors="*{id}"></td>
-        </tr>
-        <tr>
-            <td>Quantity:</td>
-            <td><input th:field="*{quantity}"></td>
-            <td th:if="#{field.hasErrors('quantity')}" th:errors="*{quantity}">Error in quantity!</td>
-        </tr>
-        <tr>
-            <td><input type="submit" value="Add to cart"></td>
-        </tr>
-        <tr>
-            <td><a href="stop-shopping"><input type="button" value="Stop shopping"/></a></td>
-        </tr>
+<center>
+    <head th:replace="fragments/header :: header-css">
+    </head>
 
-    </table>
-</form>
 
-</body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <div class="row">
+            <meta charset="ISO-8859-1">
+            <title>Home Page</title>
+            <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+            <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+            <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        </div>
+        <head>
+            <meta charset="UTF-8">
+            <title>Market</title>
+        </head>
+        <body>
+        <h1>Market</h1>
+        <form action="#" th:action="@{/purchase/{id}(id=${product.id})/{quantity}(id=${product.quantity})}"
+              th:object="${product}" method="post">
+            <table>
+                <tr>
+                    <td>Product id:</td>
+                    <td><input th:type="number" th:field="*{id}"></td>
+                    <td th:if="#{field.hasErrors('id')}" th:errors="*{id}"></td>
+                </tr>
+                <tr>
+                    <td>Quantity:</td>
+                    <td><input th:field="*{quantity}"></td>
+                    <td th:if="#{field.hasErrors('quantity')}" th:errors="*{quantity}">Error in quantity!</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Add to cart"></td>
+                </tr>
+                <tr>
+                    <td><a href="stop-shopping"><input type="button" value="Stop shopping"/></a></td>
+                </tr>
+
+            </table>
+        </form>
+        <br><br><br><br>
+
+        <div th:replace="fragments/footer :: footer"></div>
+
+        </body>
+    </div>
+</center>
 </html>

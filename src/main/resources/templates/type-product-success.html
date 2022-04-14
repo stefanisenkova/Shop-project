@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<center>
+    <head th:replace="fragments/header :: header-css">
+        <title>Category success</title>
+    </head>
+    <div th:replace="fragments/header :: header"></div>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Type product success</title>
-</head>
-<body>
-<a href="/menu"><input type="submit" value="Home" /></a>
-<h2>Successful product type implementation</h2>
-<p th:text="'Name: '+${typeProduct.name}"/>
-<a href="/insert-type-product-form">Submit another type product</a>
-</body>
+    <div class="container">
+        <div class="row">
+            <meta charset="ISO-8859-1">
+            <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+            <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+            <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        </div>
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    </div>
+    <body><br><br><br>
 
+    <h2>Successful product type implementation</h2>
+    <p th:text="'Name: '+${typeProduct.name}"/>
+    <a href="/insert-type-product-form">Submit another type product</a>
+    <br><br><br><br>
+
+    <div th:replace="fragments/footer :: footer"></div>
+    </body>
+</center>
 </html>

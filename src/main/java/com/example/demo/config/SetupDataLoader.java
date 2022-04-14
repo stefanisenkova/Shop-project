@@ -41,16 +41,14 @@ public class SetupDataLoader implements
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if (alreadySetup)
             return;
-        Privilege readPrivilege
-                = createPrivilegeIfNotFound("READ_PRIVILEGE");
-        Privilege writePrivilege
-                = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
+        Privilege customer
+                = createPrivilegeIfNotFound("CUSTOMER_PRIVILEGE");
+        Privilege employee
+                = createPrivilegeIfNotFound("EMPLOYEE_PRIVILEGE");
         List<Privilege> employeePrivileges = Arrays.asList(
-                readPrivilege, writePrivilege);
-        createRoleIfNotFound("ROLE_CUSTOMER", Arrays.asList(readPrivilege));
+                customer, employee);
+        createRoleIfNotFound("ROLE_CUSTOMER", Arrays.asList(customer));
         Role employeeRole = createRoleIfNotFound("ROLE_EMPLOYEE", employeePrivileges);
-
-
         alreadySetup = true;
     }
 

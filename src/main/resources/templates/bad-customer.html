@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>S&S shop</title>
-</head>
-<body>
-<h2>Why didn't you buy anything?</h2>
-<p>You disappointed the S&S team :(</p>
-<a href="/buy-something-form"><input type="submit" value="Back" /></a>
-<a href="/menu"><input type="submit" value="Home" /></a>
-</body>
+
+<center>
+    <head th:replace="fragments/header :: header-css">
+    </head>
+
+
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <div class="row">
+            <meta charset="ISO-8859-1">
+            <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+            <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+            <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        </div>
+
+        <body>
+        <title>S&S shop</title>
+
+        <h2>Why didn't you buy anything?</h2>
+        <center>
+            <p>You disappointed the S&S team :(</p>
+            <a href="/buy-something-form"><input type="submit" value="Back"/></a>
+            <a href="/menu"><input type="submit" value="Home"/></a>
+        </center>
+
+        </body>
+        <br><br><br><br>
+
+        <div th:replace="fragments/footer :: footer"></div>
+    </div>
+</center>
 </html>
