@@ -38,11 +38,11 @@ public class Role implements GrantedAuthority {
         this.name = name;
     }
 
-    public Collection<User> getEmployees() {
+    public Collection<User> getUsers() {
         return users;
     }
 
-    public void setEmployees(Collection<User> users) {
+    public void setUsers(Collection<User> users) {
         this.users = users;
     }
 
