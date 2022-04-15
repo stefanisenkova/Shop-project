@@ -1,9 +1,9 @@
 package com.example.demo.repository;
 
 import com.example.demo.entity.Product;
-import com.example.demo.entity.TypeProduct;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -20,5 +20,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     List<Product> findByNameContainingIgnoreCase(String name);
 
-
+    @Query("SELECT u FROM Product u WHERE u.name = ?1")
+    public Product findByName(String name);
 }
