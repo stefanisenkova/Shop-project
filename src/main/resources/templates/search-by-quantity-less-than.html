@@ -20,16 +20,20 @@
     </div>
 
     <body>
+    <br><br>
     <h1>Search quantity</h1>
+    <br>
     <form action="#" th:action="@{/printing-by-less-quantity/{quantity}(id=${product.quantity})}" th:object="${product}"
           method="get">
         <table>
-            <tr>Product quantity:</tr>
-            <tr><input th:field="*{quantity}"></tr>
-            <td><input type="submit" value="Search"></td>
+            <tr>
+                <td>Product quantity:</td>
+                <td><input th:field="*{quantity}"></td>
+                <td><input type="submit" value="Search"></td>
+            </tr>
         </table>
     </form>
-    <br><br><br><br>
+    <br><br><br>
 
     <div th:replace="fragments/footer :: footer"></div>
     </body>

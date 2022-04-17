@@ -11,10 +11,21 @@ public class TypeProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotEmpty
+    @Column(unique = true)
     public String name;
 
     @OneToMany(mappedBy = "typeProduct")
     private List<Product> products;
+
+    public TypeProduct() {
+    }
+    public TypeProduct(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+    public TypeProduct(String name) {
+        this.name = name;
+    }
 
     public List<Product> getProducts() {
         return products;

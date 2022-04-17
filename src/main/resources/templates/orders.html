@@ -18,9 +18,6 @@
             <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
             <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
         </div>
-        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
-        <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     </div>
     <body>
 
@@ -70,7 +67,7 @@
                     <tr th:each="order: ${orders}">
                         <td th:text="${order.id}"></td>
                         <td th:text="${order.price}"></td>
-                        <td th:text="${order.date}"></td>
+                        <td th:text="${#dates.format(order.date, 'HH:mm dd-MM-yyyy')}"></td>
                         <td>
                             <form th:action="@{/order-status-update/{id}(id=${order.id})}" th:object="${order}"
                                   method="post">

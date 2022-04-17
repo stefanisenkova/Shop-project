@@ -23,12 +23,38 @@
     <br><br><br>
 
     <h2>Successful product introduction</h2>
-    <p th:text="'Name: '+${product.name}"/>
-    <p th:text="'Price: '+${product.price}"/>
-    <p th:text="'Quantity: '+${product.quantity}"/>
-    <p th:text="'Type product id: '+${product.getTypeProduct().getId()}"/>
-    <p th:text="'Expires in: '+${product.expiresIn}"/>
-    <a href="/insert-product-form">Submit another product</a>
+    <div class="table-responsive">
+        <table class="table align-middle">
+        </table>
+    </div>
+    <div>
+        <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Type product id</th>
+            <th>Expires in</th>
+        </tr>
+        </thead>
+            <tbody>
+            <tr>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.quantity}"></td>
+                <td th:text="${product.getTypeProduct().getId()}"></td>
+                <td th:text="${product.expiresIn}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+<!--    <p th:text="'Name: '+${product.name}"/>-->
+<!--    <p th:text="'Price: '+${product.price}"/>-->
+<!--    <p th:text="'Quantity: '+${product.quantity}"/>-->
+<!--    <p th:text="'Type product id: '+${product.getTypeProduct().getId()}"/>-->
+<!--    <p th:text="'Expires in: '+${product.expiresIn}"/>-->
+    <a href="/insert-product-form"><input type="button" value="Submit another product"> </a>
     <br><br><br><br>
 
     <div th:replace="fragments/footer :: footer"></div>

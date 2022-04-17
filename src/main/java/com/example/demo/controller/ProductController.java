@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Product;
 import com.example.demo.entity.TypeProduct;
 import com.example.demo.repository.ProductRepository;
-import com.example.demo.entity.Product;
 import com.example.demo.repository.TypeProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -31,7 +31,9 @@ public class ProductController {
     }
 
     @GetMapping("/insert-product-form")
-    public String openInsertProductForm(Product product) {
+    public String openInsertProductForm(Product product, Model model) {
+        List<TypeProduct> typeProducts=typeProductRepository.findAll();
+        model.addAttribute("typeProducts",typeProducts);
         return "insert-product-form";
     }
 
@@ -41,21 +43,26 @@ public class ProductController {
             return "insert-product-form";
         }
         productRepository.save(product);
+
         return "product-success";
     }
 
     @GetMapping("/insert-type-product-form")
-    public String openInsertTypeProductForm(TypeProduct typeProduct) {
+    public String openInsertTypeProductForm(TypeProduct typeProduct,Model model) {
+        List<TypeProduct> typeProducts=typeProductRepository.findAll();
+        model.addAttribute("typeProducts",typeProducts);
         return "insert-type-product-form";
     }
 
     @PostMapping("/insert-type-product-form")
     public String typeProductSubmit(@Valid TypeProduct typeProduct, BindingResult bindingResult) {
+
         if (bindingResult.hasErrors()) {
             return "insert-type-product-form";
         }
         typeProductRepository.save(typeProduct);
-        return "type-product-success";
+        //return "type-product-success";
+        return "redirect:/insert-type-product-form";
     }
 
     @GetMapping("/products")
@@ -237,7 +244,10 @@ public class ProductController {
 
 
     @GetMapping("/search-product-by-category")
-    public String searchProductByCategory(TypeProduct typeProduct) {
+    public String searchProductByCategory(TypeProduct typeProduct, Model model)
+    {
+        List<TypeProduct> typeProducts=typeProductRepository.findAll();
+        model.addAttribute("typeProducts",typeProducts);
         return "search-product-by-category";
     }
 
@@ -245,15 +255,18 @@ public class ProductController {
     public String printProductByCategory(@RequestParam String name, Model model) {
 
         List<TypeProduct> typeProduct = typeProductRepository.findByNameContainingIgnoreCase(name);
-        if (typeProduct.size() != 1) {
+        if (typeProduct.size() <1) {
             return "wrong-category-name";
         }
         List<Product> listProducts = productRepository.findAll();
         List<Product> correctCategory = new ArrayList<>();
         for (int i = 0; i < listProducts.size(); i++) {
-            if (listProducts.get(i).getTypeProduct().name.equals(typeProduct.get(0).name) && listProducts.get(i).getQuantity() > 0) {
+            if (listProducts.get(i).getTypeProduct().getName().equals(typeProduct.get(0).getName()) && listProducts.get(i).getQuantity() > 0) {
                 correctCategory.add(listProducts.get(i));
             }
+        }
+        if(correctCategory.isEmpty()){
+            return "have-not-products";
         }
         model.addAttribute("listProducts", correctCategory);
         return "printing-product-by-category";

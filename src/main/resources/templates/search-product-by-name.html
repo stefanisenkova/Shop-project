@@ -19,16 +19,20 @@
         <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     </div>
     <body>
+    <br><br>
     <h1>Search product by name</h1>
+    <br>
     <form action="#" th:action="@{/printing-product-by-name/{name}(id=${product.name})}" th:object="${product}"
           method="get">
         <table>
-            <tr>Product name:</tr>
-            <tr><input th:field="*{name}"></tr>
-            <td><input type="submit" value="Search"></td>
+            <tr>
+                <td>Product name:</td>
+                <td><input th:field="*{name}"></td>
+                <td><input type="submit" value="Search"></td>
+            </tr>
         </table>
     </form>
-    <br><br><br><br>
+    <br><br><br>
 
     <div th:replace="fragments/footer :: footer"></div>
     </body>

@@ -20,16 +20,25 @@
     </div>
 
     <body>
+    <br><br>
     <h1>Search product by category</h1>
+    <br>
     <form action="#" th:action="@{/printing-product-by-category/{name}(id=${typeProduct.name})}"
           th:object="${typeProduct}" method="get">
         <table>
-            <tr>Product category:</tr>
-            <tr><input th:field="*{name}"></tr>
-            <td><input type="submit" value="Search"></td>
+            <tr>
+                <td>Product category:</td>
+                <td>
+                    <select  th:field="*{name}">
+                        <option th:each="type : ${typeProducts}"
+                                th:value="${type.name}" th:text="${type.name}"></option>
+                    </select>
+                </td>
+                <td><input type="submit" value="Search"></td>
+            </tr>
         </table>
     </form>
-    <br><br><br><br>
+    <br><br><br>
 
     <div th:replace="fragments/footer :: footer"></div>
     </body>

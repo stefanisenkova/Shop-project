@@ -17,7 +17,6 @@
             <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
         </div>
         <body>
-        <a href="/product-management-form"><input type="submit" value="Back"/></a>
         <h2>Insert product</h2>
         <form action="#" th:action="@{/insert-product-form}" th:object="${product}" method="post">
             <table>
@@ -37,15 +36,20 @@
                     <td th:if="#{field.hasErrors('quantity')}" th:errors="*{quantity}">Error in quantity!</td>
                 </tr>
                 <tr>
-                    <td>Type product id:</td>
-                    <td><input th:type="number" th:field="*{typeProduct.id}"></td>
+                    <td>Type product:</td>
+                    <td>
+                        <select id="typeProduct" th:field="*{typeProduct.id}">
+                            <option th:each="type : ${typeProducts}"
+                                    th:value="${type.id}" th:text="${type.name}"></option>
+                        </select>
+                    </td>
                     <td th:if="#{field.hasErrors('typeProduct.id')}" th:errors="*{typeProduct.id}">Error in product type
                         id!
                     </td>
                 </tr>
                 <tr>
                     <td>Expires in:</td>
-                    <td><input th:type="date" th:field="*{expiresIn}"></td>
+                    <td><input type="date"  th:field="*{expiresIn}"></td>
                     <td th:if="#{field.hasErrors('expiresIn')}" th:errors="*{expiresIn}">Error in expiresIn!</td>
                 </tr>
                 <tr>

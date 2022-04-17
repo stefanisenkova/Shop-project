@@ -19,8 +19,9 @@ public class Product {
     private String name;
     private double price;
     private double quantity;
-    @Column(name = "expires_in")
+
     @CreatedDate
+    @Column(name = "expires_in")
      private Date expiresIn;
 
     @ManyToOne
@@ -29,6 +30,7 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     private List<Purchase> purchases;
+
 
     public int getId() {
         return id;
