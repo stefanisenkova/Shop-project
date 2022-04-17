@@ -22,7 +22,6 @@ public class User {
     private String lastName;
     @NotNull
     private int age;
-    @NotNull
     private double salary;
 
     @ManyToMany(fetch = FetchType.EAGER)

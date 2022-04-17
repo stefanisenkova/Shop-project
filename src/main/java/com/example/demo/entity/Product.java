@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.util.List;
@@ -15,17 +16,20 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Size(min = 2,max = 20)
+    @Size(min = 2, max = 20)
     private String name;
+    private String color;
+    @NotNull
     private double price;
+    @NotNull
     private double quantity;
 
     @CreatedDate
     @Column(name = "expires_in")
-     private Date expiresIn;
+    private Date expiresIn;
 
     @ManyToOne
-    @JoinColumn(name="type_product_id", referencedColumnName = "id")
+    @JoinColumn(name = "type_product_id", referencedColumnName = "id")
     private TypeProduct typeProduct;
 
     @OneToMany(mappedBy = "product")
@@ -38,6 +42,14 @@ public class Product {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getName() {

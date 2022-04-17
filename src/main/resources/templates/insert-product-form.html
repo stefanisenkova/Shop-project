@@ -36,6 +36,11 @@
                     <td th:if="#{field.hasErrors('quantity')}" th:errors="*{quantity}">Error in quantity!</td>
                 </tr>
                 <tr>
+                <td>Color:</td>
+                <td><input th:field="*{color}"></td>
+                <td th:if="#{field.hasErrors('color')}" th:errors="*{color}">Error in Color!</td>
+                </tr>
+                <tr>
                     <td>Type product:</td>
                     <td>
                         <select id="typeProduct" th:field="*{typeProduct.id}">

@@ -17,10 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class UserController {
@@ -28,6 +25,7 @@ public class UserController {
     private RoleRepository roleRepository;
     @Autowired
     private UserRepository userRepository;
+    double salary = 0;
 
 
     @GetMapping("/employee-register")
@@ -70,29 +68,55 @@ public class UserController {
 
     @GetMapping("/sort-employees-by-first-name-ASC")
     public String sortEmployeesByNameASC(Model model) {
+
         List<User> employees = userRepository.findAll(Sort.by(Sort.Direction.ASC, "firstName"));
-        model.addAttribute("employees", employees);
+        for (int i = 0; i < employees.size(); i++) {
+            if (Objects.equals(employees.get(i).getSalary(), salary)) {
+                employees.remove(employees.get(i));
+                model.addAttribute("employees", employees);
+
+            }
+        }
         return "sorting-employees";
     }
 
     @GetMapping("/sort-employees-by-first-name-DESC")
     public String sortEmployeesByNameDESC(Model model) {
         List<User> employees = userRepository.findAll(Sort.by(Sort.Direction.DESC, "firstName"));
-        model.addAttribute("employees", employees);
+        for (int i = 0; i < employees.size(); i++) {
+            if (Objects.equals(employees.get(i).getSalary(), salary)) {
+                employees.remove(employees.get(i));
+                model.addAttribute("employees", employees);
+
+            }
+        }
         return "sorting-employees";
     }
 
     @GetMapping("/sort-employees-by-salary-ASC")
     public String sortEmployeesBySalaryASC(Model model) {
         List<User> employees = userRepository.findAll(Sort.by(Sort.Direction.ASC, "salary"));
-        model.addAttribute("employees", employees);
+        for (int i = 0; i < employees.size(); i++) {
+            if (Objects.equals(employees.get(i).getSalary(), salary)) {
+                employees.remove(employees.get(i));
+                model.addAttribute("employees", employees);
+
+            }
+
+        }
         return "sorting-employees";
     }
 
     @GetMapping("/sort-employees-by-salary-DESC")
     public String sortEmployeesBySalaryDESC(Model model) {
         List<User> employees = userRepository.findAll(Sort.by(Sort.Direction.DESC, "salary"));
-        model.addAttribute("employees", employees);
+        for (int i = 0; i < employees.size(); i++) {
+            if (Objects.equals(employees.get(i).getSalary(), salary)) {
+                employees.remove(employees.get(i));
+                model.addAttribute("employees", employees);
+
+            }
+        }
         return "sorting-employees";
     }
 }
