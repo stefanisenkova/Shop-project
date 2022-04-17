@@ -20,6 +20,7 @@
         <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     </div>
     <body>
+    <br><br>
     <div class="container text-center">
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
@@ -46,11 +47,11 @@
                 <td th:text="${product.typeProduct}">Type</td>
 
                 <td>
-                    <a th:href="@{/product-edit/{id}(id=${product.id})}" sec:authorize="hasRole('ROLE_ADMIN')"> Edit</a>
+                    <a th:href="@{/product-edit/{id}(id=${product.id})}" sec:authorize="hasRole('ROLE_EMPLOYEE')"> Edit</a>
                 </td>
                 <td>
                     <form th:action="@{/product-delete/{id}(id=${product.id})}" method="post"
-                          sec:authorize="hasRole('ROLE_ADMIN')">
+                          sec:authorize="hasRole('ROLE_EMPLOYEE')">
                         <input type="submit" value="Delete">
                     </form>
                 </td>

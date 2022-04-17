@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import com.example.demo.Status;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -14,6 +15,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private double price;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     @CreationTimestamp
     private Timestamp date;
     @Enumerated(EnumType.STRING)

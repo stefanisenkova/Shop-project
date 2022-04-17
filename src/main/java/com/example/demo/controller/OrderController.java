@@ -8,6 +8,7 @@ import com.example.demo.repository.OrderRepository;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.PurchaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +31,7 @@ public class OrderController {
 
     @GetMapping("/orders")
     public String orders(Order order, Model model) {
-        orders = orderRepository.findAll();
+        orders = orderRepository.findAll(Sort.by(Sort.Direction.DESC, "date"));
         model.addAttribute("orders", orders);
         return "orders";
     }
